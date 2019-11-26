@@ -47,14 +47,11 @@ kubectl get services
 
 
  
- 
-MACLTUS66526:econsult-server m_615672$ kubectl get nodes NAME STATUS ROLES AGE VERSION
+ $ kubectl get nodes NAME STATUS ROLES AGE VERSION
 
-MACLTUS66526:econsult-server m_615672$ kubectl get pod No resources found.
-
-MACLTUS66526:econsult-server m_615672$ kubectl get deployments No resources found.
-
-MACLTUS66526:econsult-server m_615672$ minikube dashboard
+ $ kubectl get pod No resources found.
+ $ kubectl get deployments No resources found.
+ $ minikube dashboard
 
 kubectl create -f deployment.yml
 
