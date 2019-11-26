@@ -1,0 +1,39 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mydockertest
+spec:
+  selector:
+    app: mydockertest
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster
+      port: 8081
+      # Port to forward to inside the pod
+      targetPort: 8080
+      # Port accessible outside cluster
+      nodePort: 30003
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydockertestdeployment
+  labels:
+    app: mydockertest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mydockertest
+  template:
+    metadata:
+      labels:
+        app: mydockertest
+    spec:
+      containers:
+        - name: mydockertest
+          image: kkataria1983/scuticommerce:v1
+          ports:
+            - containerPort: 8080
